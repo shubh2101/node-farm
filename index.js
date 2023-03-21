@@ -1,6 +1,5 @@
 const fs = require("fs");
 const http = require("http");
-const url = require("url");
 
 // synchronous way
 // const textIn = fs.readFileSync("./txt/input.txt", "utf-8");
@@ -57,20 +56,33 @@ const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, "utf-8");
 const dataObj = JSON.parse(data);
 
 const server = http.createServer((req, res) => {
-  const pathName = req.url;
+  const baseURL = `http://${req.headers.host}`;
+  const requestURL = new URL(req.url, baseURL);
+  const { pathname: pathName, searchParams } = requestURL;
+  const queryId = searchParams.get("id");
+
+  // Overview page
   if (pathName === "/" || pathName === "/overview") {
     res.writeHead(200, { "Content-type": "text/html" });
     const cardsHtml = dataObj
       .map((el) => replaceTemplate(tempCard, el))
       .join(" ");
     const output = tempOverview.replace("{%PRODUCT_CARDS%}", cardsHtml);
-
     res.end(output);
-  } else if (pathName === "/products") {
-    res.end("This is PRODUCTS");
+
+    // Product Page
+  } else if (pathName === "/product") {
+    res.writeHead(200, { "Content-type": "text/html" });
+    const product = dataObj[queryId];
+    const ouput = replaceTemplate(tempProduct, product);
+    res.end(ouput);
+
+    // Api Page
   } else if (pathName === "/api") {
     res.writeHead(200, { "Content-type": "application/json" });
     res.end(data);
+
+    // Not Found
   } else {
     res.writeHead(404, {
       "Content-type": "text/html",

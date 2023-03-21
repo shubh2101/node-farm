@@ -31,7 +31,7 @@
       font-family: 'Nunito Sans', sans-serif;
       color: #555;
       min-height: 100vh;
-      background: linear-gradient(to bottom right, #9be15d, #00e3ae);
+      background: linear-gradient(to right, #00b4db, #0083b0);
     }
 
     h1 {
@@ -52,7 +52,7 @@
       position: absolute;
       top: 105%;
       left: 50%;
-      background: linear-gradient(to bottom, #9be15d, #00e3ae);
+      background: linear-gradient(to right, #00b4db, #0083b0);
       opacity: 0.8;
       z-index: -1;
       transform: skewY(370deg) translate(-50%, -50%);
@@ -86,7 +86,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      background-image: linear-gradient(to left bottom, #9be15d, #00e3ae);
+      background: linear-gradient(to left bottom,  #00cdac 0%, #8ddad5);
       opacity: 0.5;
       z-index: 100;
     }
@@ -150,7 +150,8 @@
       z-index: 1000;
       height: 11rem;
       width: 11rem;
-      background-image: linear-gradient(to bottom, #9be15d, #00e3ae);
+      background-image: linear-gradient(to bottom,  #00cdac 0%, #8ddad5);
+      
       border-radius: 50%;
       transform: rotate(15deg);
       box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.4);
@@ -188,11 +189,11 @@
 
     .product__back:hover,
     .product__back:active {
-      background-color: #79e17b;
+      background-color: #00cdac;
     }
 
     .product__name {
-      background: linear-gradient(to bottom, #9be15d, #00e3ae);
+      background: linear-gradient(to bottom,   #00cdac 0%, #8ddad5);
       padding: 1rem;
       font-family: 'Megrim', sans-serif;
       font-size: 4rem;
@@ -219,7 +220,7 @@
     .product__link:link,
     .product__link:visited {
       display: block;
-      background-color: #79e17b;
+      background-color:   #00cdac;
       color: white;
       font-size: 1.6rem;
       font-weight: 700;
@@ -237,7 +238,7 @@
 
     .product__link:hover,
     .product__link:active {
-      background-color: #9be15d;
+      background-color: #05f7cf;
       transform: scale(1.1) skewX(-20deg);
     }
 
@@ -269,7 +270,7 @@
       <div class="product__organic {%NOT_ORGANIC%}">
         <h5>Organic</h5>
       </div>
-      <a href="#" class="product__back">
+      <a href="/overview" class="product__back">
         <span class="emoji-left">👈</span>Back
       </a>
       <div class="product__hero">
